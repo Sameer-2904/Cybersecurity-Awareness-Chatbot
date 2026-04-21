@@ -1,0 +1,286 @@
+{
+  "threats": {
+    "phishing": {
+      "definition": "Phishing is a cyberattack where attackers disguise themselves as trusted entities to trick victims into revealing sensitive information like passwords, credit card numbers, or personal data.",
+      "types": [
+        "Spear Phishing: Targeted attacks on specific individuals using personal information",
+        "Whaling: Attacks targeting high-profile executives or VIPs",
+        "Smishing: Phishing via SMS text messages",
+        "Vishing: Voice phishing via phone calls",
+        "Clone Phishing: Duplicating legitimate emails with malicious links"
+      ],
+      "indicators": [
+        "Urgent or threatening language ('Your account will be suspended!')",
+        "Mismatched or suspicious sender email domains",
+        "Generic greetings like 'Dear Customer' instead of your name",
+        "Unexpected attachments or links",
+        "Requests for sensitive information via email",
+        "Poor grammar and spelling errors",
+        "Suspicious URLs that mimic legitimate sites (paypa1.com instead of paypal.com)"
+      ],
+      "examples": [
+        "Fake bank email claiming suspicious activity requiring immediate login",
+        "Fake IT department email asking you to reset your password via a link",
+        "Fake package delivery notification with malicious tracking link",
+        "Fake prize/lottery winning notification requiring personal details"
+      ],
+      "prevention": [
+        "Always verify sender email addresses carefully",
+        "Hover over links before clicking to see the real URL",
+        "Go directly to websites by typing the URL instead of clicking links",
+        "Enable multi-factor authentication (MFA) on all accounts",
+        "Use email filtering and anti-phishing tools",
+        "When in doubt, call the organization directly to verify"
+      ]
+    },
+    "malware": {
+      "definition": "Malware (malicious software) is any software intentionally designed to cause disruption, damage, or unauthorized access to computer systems.",
+      "types": [
+        "Viruses: Self-replicating code that attaches to legitimate programs",
+        "Trojans: Malware disguised as legitimate software",
+        "Spyware: Secretly monitors user activity and collects data",
+        "Adware: Displays unwanted advertisements, often bundled with free software",
+        "Rootkits: Hides malware presence from the operating system",
+        "Keyloggers: Records keystrokes to steal passwords and data",
+        "Worms: Self-replicating malware that spreads across networks without user action",
+        "Fileless Malware: Operates in memory without leaving files on disk"
+      ],
+      "infection_vectors": [
+        "Malicious email attachments",
+        "Drive-by downloads from compromised websites",
+        "Infected USB drives",
+        "Pirated software downloads",
+        "Malicious browser extensions",
+        "Unpatched software vulnerabilities"
+      ],
+      "prevention": [
+        "Install reputable antivirus/anti-malware software",
+        "Keep all software and operating systems updated",
+        "Avoid downloading software from untrusted sources",
+        "Don't open unexpected email attachments",
+        "Use a firewall",
+        "Regularly scan your system",
+        "Be cautious with USB drives from unknown sources"
+      ]
+    },
+    "ransomware": {
+      "definition": "Ransomware is a type of malware that encrypts the victim's files and demands payment (usually cryptocurrency) for the decryption key.",
+      "how_it_works": [
+        "1. Initial infection via phishing email, malicious download, or RDP exploit",
+        "2. Malware establishes persistence on the system",
+        "3. Connects to attacker's command-and-control server",
+        "4. Generates encryption keys",
+        "5. Encrypts files (documents, images, databases)",
+        "6. Displays ransom note demanding payment",
+        "7. May exfiltrate data before encryption (double extortion)"
+      ],
+      "famous_attacks": [
+        "WannaCry (2017): Infected 200,000+ computers in 150 countries, caused $4B+ in damages",
+        "NotPetya (2017): Disguised as ransomware, actually a wiper; caused $10B+ in damages",
+        "Colonial Pipeline (2021): Shut down major US fuel pipeline, $4.4M ransom paid",
+        "REvil/Kaseya (2021): Affected 1,500+ businesses through MSP supply chain attack"
+      ],
+      "prevention": [
+        "Maintain regular, tested backups (3-2-1 rule: 3 copies, 2 media types, 1 offsite)",
+        "Keep systems fully patched and updated",
+        "Use email filtering to block malicious attachments",
+        "Restrict user privileges (principle of least privilege)",
+        "Disable Remote Desktop Protocol (RDP) if not needed",
+        "Implement network segmentation",
+        "Train employees on phishing awareness"
+      ],
+      "if_infected": [
+        "DO NOT pay the ransom — payment doesn't guarantee recovery",
+        "Immediately isolate infected systems from the network",
+        "Document everything for law enforcement",
+        "Report to FBI (IC3.gov) or relevant authorities",
+        "Restore from clean backups",
+        "Engage a professional incident response team"
+      ]
+    },
+    "social_engineering": {
+      "definition": "Social engineering manipulates people psychologically to divulge confidential information or perform actions that compromise security.",
+      "techniques": [
+        "Pretexting: Creating a fabricated scenario to extract information",
+        "Baiting: Offering something enticing (free USB drive) with hidden malware",
+        "Quid Pro Quo: Offering services in exchange for information",
+        "Tailgating/Piggybacking: Physically following authorized personnel into restricted areas",
+        "Impersonation: Pretending to be IT support, executives, or vendors"
+      ],
+      "psychological_triggers": [
+        "Authority: Impersonating bosses, police, or government officials",
+        "Urgency: 'Act now or lose your account!'",
+        "Scarcity: 'Limited time offer'",
+        "Social Proof: 'Everyone else has already done this'",
+        "Reciprocity: Doing something for you first to create obligation",
+        "Fear: Threats of consequences if you don't comply"
+      ]
+    },
+    "man_in_the_middle": {
+      "definition": "MITM attacks occur when an attacker secretly intercepts and potentially alters communications between two parties who believe they are directly communicating.",
+      "types": [
+        "SSL Stripping: Downgrading HTTPS to HTTP",
+        "Wi-Fi Eavesdropping: Setting up rogue hotspots",
+        "ARP Spoofing: Linking attacker's MAC to legitimate IP",
+        "DNS Spoofing: Redirecting DNS queries to malicious sites",
+        "Email Hijacking: Intercepting email communications"
+      ],
+      "prevention": [
+        "Always use HTTPS websites (look for padlock icon)",
+        "Avoid public Wi-Fi for sensitive transactions",
+        "Use a VPN on public networks",
+        "Enable certificate pinning in applications",
+        "Use end-to-end encrypted communications"
+      ]
+    },
+    "sql_injection": {
+      "definition": "SQL Injection is an attack where malicious SQL code is inserted into database queries, potentially allowing attackers to view, modify, or delete database data.",
+      "example": "Entering ' OR '1'='1 in a login field to bypass authentication",
+      "prevention": [
+        "Use parameterized queries/prepared statements",
+        "Implement input validation and sanitization",
+        "Use a Web Application Firewall (WAF)",
+        "Apply least privilege to database accounts",
+        "Regularly audit database activity"
+      ]
+    },
+    "ddos": {
+      "definition": "A Distributed Denial of Service attack floods a target with traffic from multiple sources to overwhelm and disrupt services.",
+      "types": [
+        "Volumetric Attacks: Flooding bandwidth with junk traffic",
+        "Protocol Attacks: Exploiting network protocol weaknesses",
+        "Application Layer Attacks: Targeting web servers and applications"
+      ],
+      "prevention": [
+        "Use DDoS protection services (Cloudflare, AWS Shield)",
+        "Implement rate limiting",
+        "Use Content Delivery Networks (CDNs)",
+        "Have an incident response plan ready",
+        "Monitor traffic for anomalies"
+      ]
+    }
+  },
+  "best_practices": {
+    "passwords": {
+      "rules": [
+        "Use at least 16 characters",
+        "Mix uppercase, lowercase, numbers, and symbols",
+        "Never reuse passwords across sites",
+        "Use a password manager (Bitwarden, 1Password, etc.)",
+        "Enable MFA wherever possible",
+        "Never share passwords",
+        "Change passwords immediately if breach suspected"
+      ],
+      "strong_examples": [
+        "Tr0ub4dor&3 (but don't use this now it's famous!)",
+        "correct-horse-battery-staple (passphrase method)",
+        "mY_d0g_L0v3s_P1zz@_2024!"
+      ]
+    },
+    "mfa": {
+      "definition": "Multi-Factor Authentication requires two or more verification methods to access an account.",
+      "types": [
+        "Something you know: Password, PIN",
+        "Something you have: Phone (authenticator app, SMS), hardware token",
+        "Something you are: Fingerprint, face recognition"
+      ],
+      "best_options": [
+        "Authenticator apps (Google Authenticator, Authy) — most secure",
+        "Hardware keys (YubiKey) — strongest option",
+        "SMS codes — better than nothing but susceptible to SIM swapping",
+        "Email codes — weakest form of MFA"
+      ]
+    },
+    "software_updates": [
+      "Enable automatic updates for OS and software",
+      "Update firmware on routers and IoT devices",
+      "Patch management is one of the most critical security controls",
+      "60% of breaches involve known vulnerabilities that had patches available"
+    ],
+    "network_security": [
+      "Use WPA3 encryption on Wi-Fi",
+      "Change default router credentials",
+      "Create a separate guest network for IoT devices",
+      "Use a firewall",
+      "Consider a VPN for sensitive browsing",
+      "Regularly audit connected devices"
+    ],
+    "backup_strategy": {
+      "rule": "3-2-1 Backup Rule",
+      "details": [
+        "3 copies of your data",
+        "2 different storage media types",
+        "1 copy stored offsite (cloud or physical location)",
+        "Test your backups regularly — untested backups are not backups",
+        "Encrypt sensitive backups"
+      ]
+    },
+    "email_security": [
+      "Be skeptical of unexpected emails",
+      "Verify senders before clicking links or attachments",
+      "Use email encryption for sensitive communications (PGP/S/MIME)",
+      "Enable spam filtering",
+      "Use disposable emails for sign-ups",
+      "Check for email authentication (SPF, DKIM, DMARC)"
+    ],
+    "browsing_safety": [
+      "Only visit HTTPS sites for sensitive transactions",
+      "Use a reputable browser with security features",
+      "Install an ad blocker (uBlock Origin)",
+      "Use Privacy Badger or similar tracker blockers",
+      "Be cautious with browser extensions",
+      "Clear cookies and cache regularly",
+      "Consider using Tor Browser for privacy-sensitive browsing"
+    ]
+  },
+  "link_analysis": {
+    "suspicious_indicators": [
+      "Misspelled domain names (paypa1.com, arnazon.com)",
+      "Extra subdomains (paypal.login.evilsite.com)",
+      "URL shorteners hiding the real destination",
+      "HTTP instead of HTTPS for login pages",
+      "Unusual top-level domains (.xyz, .tk, .ml for banking sites)",
+      "IP addresses instead of domain names",
+      "Excessively long URLs with random characters",
+      "URLs with @ symbol (everything before @ is ignored)",
+      "Mismatched anchor text and actual URL"
+    ],
+    "how_to_check": [
+      "Hover over the link to see the actual URL in the status bar",
+      "Use VirusTotal.com to scan suspicious URLs",
+      "Use URLVoid.com or URLScan.io for URL reputation checks",
+      "Check WHOIS data for domain registration date (very new = suspicious)",
+      "Use Google Safe Browsing: https://transparencyreport.google.com/safe-browsing/search"
+    ]
+  },
+  "incident_response": {
+    "steps": [
+      "1. IDENTIFY: Recognize and confirm the security incident",
+      "2. CONTAIN: Isolate affected systems to prevent spread",
+      "3. ERADICATE: Remove the threat (malware, unauthorized access)",
+      "4. RECOVER: Restore systems from clean backups",
+      "5. DOCUMENT: Record everything for analysis and legal purposes",
+      "6. REPORT: Notify relevant parties (IT, management, authorities if needed)",
+      "7. LEARN: Conduct post-incident review to prevent recurrence"
+    ],
+    "contacts": [
+      "FBI Internet Crime Complaint Center: www.ic3.gov",
+      "CISA (US): www.cisa.gov/report",
+      "Action Fraud (UK): www.actionfraud.police.uk",
+      "Your organization's IT security team",
+      "Your cyber insurance provider"
+    ]
+  },
+  "quick_tips": [
+    "🔐 Use a unique password for every account",
+    "📱 Enable 2FA on all important accounts today",
+    "🔄 Keep all software updated",
+    "💾 Back up your data with the 3-2-1 rule",
+    "🎣 Verify before you click any link",
+    "📶 Use a VPN on public Wi-Fi",
+    "🛡️ Install reputable antivirus software",
+    "🔍 Monitor your accounts for suspicious activity",
+    "📧 Be skeptical of unsolicited emails",
+    "🏠 Secure your home router"
+  ]
+}
